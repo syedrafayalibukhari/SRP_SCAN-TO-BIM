@@ -1,0 +1,40 @@
+STEP 5 - MODELLING
+=================
+
+What it does
+  Reconstructs the building from the labelled floor and the scanner positions and exports IFC4:
+    1  normals for every point
+    2  floor and ceiling levels, wall and glass-wall faces
+    3  rooms (visibility from the scanner positions, cell complex, graph cut)
+    4  doors and windows (wall images with ray casting)
+    5  columns and partitions
+    6  clean-up of wall corners and overlaps, IFC export of the structure
+    7  furniture and equipment as typed IFC objects
+    8  parametric component description (components.gml / components.json)
+    9  IFC model rebuilt from the component description
+
+Inputs
+  floor_merged.ply       labelled floor from step 4
+  scan_positions.json    scanner positions from step 1
+  Without options, both are taken from this folder, otherwise from ../4_merge_tiles/merged and
+  ../1_preprocessing.
+
+Run
+  Open a command window in this folder and run:
+        python run_modeling.py --project-name "Building A, level 3"
+  Missing libraries are installed automatically on the first run.
+
+Options
+  --input FILE.ply           labelled point cloud
+  --positions FILE.json      scanner positions
+  --output-folder NAME       folder for the results (default output)
+  --project-name "NAME"      project and building name in the IFC files
+
+Results (folder "output")
+  model_structure.ifc         walls, glass walls, doors, windows, columns, partitions, spaces, slab, ceilings
+  model_with_furniture.ifc    the structure plus furniture and equipment
+  model_components.ifc        the model rebuilt from the parametric component description
+  components.gml / .json      parametric component description
+  elements.csv                list of building elements
+  stage*_log.txt, stage*.png  log and plan image of each step
+  floor.ply, meta.json        intermediate files

@@ -1,0 +1,12 @@
+*.e57
+*.ply
+*.las
+*.laz
+preprocessing_report*.txt
+scan_positions.json
+2_label_transfer/labelled/
+4_merge_tiles/corrected/
+4_merge_tiles/merged/
+5_modeling/output/
+__pycache__/
+*.pyc

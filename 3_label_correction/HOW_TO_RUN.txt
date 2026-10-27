@@ -1,0 +1,28 @@
+STEP 3 - LABEL CORRECTION
+=========================
+
+What it does
+  point_label_corrector.html is a browser tool for correcting point labels by hand.
+  It needs no installation; open it in Google Chrome or Microsoft Edge (internet connection needed
+  the first time to load the 3D library).
+
+1. Double-click point_label_corrector.html.
+2. Click "Choose File" and open one file from ../2_label_transfer/labelled.
+3. View
+     left mouse button = rotate, right mouse button = move, wheel = zoom
+     Top / Front / Side / Reset = preset views
+     Label / RGB / Confidence = colour the points by label, by scanned colour or by confidence
+     eye icons = hide or show a label; height sliders = show only a height band
+4. Correct
+     press L (or click Lasso), draw a loop around wrong points (only visible points are selected),
+     then click the correct label or press its key:
+       0 floor, 1 ceiling, 2 wall, 3 door, 4 window, 5 column, 6 desk, 7 chair, 8 monitor,
+       9 partition, - cabinet/shelf, = clutter, U unknown
+     Ctrl+Z = undo
+5. Click "Save corrected PLY". The file is saved to the Downloads folder with "_corrected" added
+   to its name.
+6. Copy the saved file into ../4_merge_tiles/corrected and repeat for the next file.
+
+Notes
+  - Use the Confidence colouring to find uncertain points first.
+  - Label points that cannot be identified as unknown rather than guessing.

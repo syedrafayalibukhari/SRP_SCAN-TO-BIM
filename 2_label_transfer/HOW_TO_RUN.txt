@@ -1,0 +1,37 @@
+STEP 2 - LABEL TRANSFER AND TILING
+==================================
+
+What it does
+  Gives every point of preprocessed.ply a starting label and a confidence (0 = unsure, 1 = sure),
+  using the trained model in the "model" folder. No training is needed. Then writes the floor as
+  tiles or as one file, ready for manual correction in step 3.
+
+1. Choose tiling
+   Open label_transfer.py in a text editor and find near the top:
+        TILE_SIZE_M = 8
+   8 = 8 m x 8 m tiles (correct one tile at a time), 0 = no tiling (one file for the whole floor).
+   Any other size can be used. Save the file.
+
+2. Open a command window in this folder and run:
+        python label_transfer.py
+   The script uses preprocessed.ply from this folder or from ../1_preprocessing.
+   To use another file:
+        python label_transfer.py --input my_floor.ply
+
+Options
+  --tile-size 0             tile size for this run instead of TILE_SIZE_M (0 = no tiling)
+  --input NAME.ply          point cloud to use
+  --output-folder NAME      folder for the results (default labelled)
+
+Results (folder "labelled")
+  tile_rXX_cYY.ply             one file per tile (row XX, column YY)
+  labelled_floor.ply           the whole floor in one file (tile size 0)
+  tile_map.png                 top view coloured by starting label with the tile grid
+                               (row 00 at the bottom, column 00 at the left)
+  label_transfer_report.txt    label shares, confidence and point counts per tile
+
+Notes
+  - The starting labels are approximate and must be corrected in step 3.
+  - Floors and ceilings are usually correct; doors, columns and clutter often need correction.
+  - train_label_model.py retrains the model from one or more labelled floors:
+        python train_label_model.py floor1.ply floor2.ply

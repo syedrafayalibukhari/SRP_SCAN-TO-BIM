@@ -1,0 +1,45 @@
+{
+  "trained_on": "floor_labelled_2cm_final.ply",
+  "created": "2026-10-26",
+  "classes": [
+    "floor",
+    "ceiling",
+    "wall",
+    "door",
+    "window",
+    "column",
+    "desk",
+    "chair",
+    "monitor",
+    "partition",
+    "cabinet_shelf",
+    "clutter"
+  ],
+  "feature_voxel_m": 0.05,
+  "neighbours": [
+    10,
+    30,
+    60
+  ],
+  "training_cubes": 407217,
+  "trees": 400,
+  "lightgbm": "4.5.0",
+  "check": {
+    "method": "floor split into 4 strips along x; each strip left out once",
+    "mean_miou": 0.418,
+    "per_class_iou": {
+      "floor": 0.961,
+      "ceiling": 0.967,
+      "wall": 0.451,
+      "door": 0.04,
+      "window": 0.316,
+      "column": 0.061,
+      "desk": 0.64,
+      "chair": 0.309,
+      "monitor": 0.232,
+      "partition": 0.339,
+      "cabinet_shelf": 0.344,
+      "clutter": 0.15
+    }
+  }
+}
